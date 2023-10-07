@@ -25,4 +25,4 @@ boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 # part e
 ggpairs(crime_numeric)
 
-
+# test text
