@@ -21,7 +21,7 @@ First thing first, we are going to use GIT, you can use the terminal embedded in
 command line if you feel confident doing that, or better we use the graphical interface in R Studio
 
 ### Pull the project
-**IMPORTANT**
+**IMPORTANT**  
 Every time you open your RStudio project you have to make sure to have the latest version of the project, to do that you have to PULL  
 the project form the repo.
 On the top left pane of your RStudio, select the Git tab, then click on Pull. If your local version is up to date with github repo,  
