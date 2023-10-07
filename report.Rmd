@@ -1,0 +1,119 @@
+---
+title: "Title Page"
+author: "Huey, Dewey, Louie"
+date: "`r Sys.Date()`"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, dependencies, echo=F}
+# First thing you have to installing the following dependencies within library()
+# and you only have to do this once
+suppressWarnings({
+  library(haven)
+  library(readr)
+  suppressMessages({library(GGally)})
+})
+```
+
+## Part a
+```{r, part_a, echo = F }
+url = "https://stats.idre.ucla.edu/wp-content/uploads/2016/02/crime.sas7bdat"
+crime_import = read_sas(url, NULL)
+str(crime_import)
+```
+#### Some text here to explain part a.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
+incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
+volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
+sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
+Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
+habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
+Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
+elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
+Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
+cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
+Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
+dictum fusce.
+
+## Part b
+```{r, part_b, echo = F}
+write.csv(crime_import, file = "crime_csv.csv", row.names = F)
+write.table(crime_import, file = "crime_txt.txt", sep = "\t", row.names = F)
+dir()
+```
+#### Some text here to explain part b.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
+incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
+volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
+sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
+Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
+habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
+Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
+elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
+Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
+cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
+Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
+dictum fusce.
+
+## Part c
+```{r, part_c, echo = F}
+crime_numeric = read_csv("crime_csv.csv",
+                         col_types = cols(sid = col_skip(),
+                                          state = col_skip(),
+                                          crime = col_skip()))
+
+str(crime_numeric)
+```
+#### Some text here to explain part c.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
+incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
+volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
+sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
+Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
+habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
+Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
+elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
+Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
+cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
+Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
+dictum fusce.
+
+## Part d
+```{r, part_d, echo = F}
+boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
+```
+#### Some text here to explain part d.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
+incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
+volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
+sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
+Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
+habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
+Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
+elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
+Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
+cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
+Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
+dictum fusce.
+
+## Part e
+```{r, part_e, echo = F}
+ggpairs(crime_numeric)
+```
+#### Some text here to explain part e.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
+incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
+volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
+sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
+Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
+habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
+Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
+elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
+Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
+cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
+Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
+dictum fusce.
