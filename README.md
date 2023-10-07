@@ -4,7 +4,7 @@ Project1 for Cluster 1 Group in Multivariate Statistical Methods
 ## Instructions for cloning this repo on RStudio 
 - From your RStudio IDE, create a new project, then select Version Control
 - Select Git to clone a project from a Git repo
-- Copy this url https://github.butler.edu/amarchi1/MA369Project1.git and paste it into Repository URL
+- Copy this url https://github.com/Doriasamp/Multivariate_Project1.git and paste it into Repository URL
 - You can rename the project if you like, this has only effect on your local env, not on the repo
 - Click on Create Project
 
