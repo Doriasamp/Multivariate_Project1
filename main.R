@@ -28,22 +28,98 @@ boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 # part e
 ggpairs(crime_numeric)
 
+################################
+
 # part f
 #Compute the sample covariance matrix and sample correlation matrix of the variables. Now, standardize the data. 
 #Calculate the covariance matrix of the standardized variables. Did you find anything
 #insightful? Round all the results up to two decimal places.
+
+#converting data into dataframe and into matrix
 crime_df = data.frame(crime_numeric)
 crime_matrix = data.matrix(crime_df)
 crime_matrix #matrix to use for creating covariance and correlation matrices
+
 #sample covariance matrix
 S = round(cov(crime_matrix), 2)
 S
+
 #sample correlation matrix
 R = round(cor(crime_matrix), 2)
 R
+
 #standardized data matrix
 std.crime_mat = scale(crime_matrix)
+
 #standardized sample covariance matrix
 S.std = round(cov(std.crime_mat), 2)
 S.std #matches R, which is correct!
-#Interpretation:
+
+#Interpretation: the correlation matrix indicates several variables (pctwhite, poverty, single) as being associated to murder
+
+###############################
+
+#part g
+#Compute the generalized sample variance and inverse of the sample covariance matrix of the data.
+#Round all the results up to three decimal places.
+
+#calculate GSV --> >0, so S is invertible
+GSV = det(S)
+GSV
+
+#inverse of sample covariance matrix
+S.inv = round(solve(S), 3)
+S.inv
+
+#########################
+#part h
+#Perform the spectral decomposition of the of the covariance matrix of the data and obtain P and
+#D matrices. Verify that P P′ = P′P = I. Compute P D P′. What relation you observed between the
+#product product matrix and the original sample covariance matrix? Compute the determinant and inverse
+#of the covariance matrix using spectral decomposition method. Check that the determinant you got here is
+#identical to generalized sample variance you have in Question (g). Can you comment on the definiteness
+#(positive, negative, semi) using any component of the decomposition? Report all the results rounding up
+#to 2 decimal places.
+
+#spectral decomposition
+Eig.S = eigen(S)
+EigVals.S = round(Eig.S$values, 2)
+EigVals.S #getting the eigenvalues
+
+#obtaining the eigenvector matrix (P)
+P=round(Eig.S$vectors, 2)
+P #creating matrix of normalized eigenvectors
+
+#showing that P'P = PP' = I
+round(P %*% t(P), 2) # equals the identity matrix -- correct!
+
+#obtaining the lambda matrix (D)
+D=diag(EigVals.S)
+D
+
+#compute the spectral decomposition matrix, PDP'
+Cov.Spec.Decomp = round(P %*% D %*% t(P), 2)
+Cov.Spec.Decomp
+S #for comparison to the original sample covariance matrix
+
+#relation b/w the "product matrix and the original sample covariance matrix":
+  #The values of the original covariance matrix and the spectral decomposition matrix are very close!
+
+#calculating determinant and inverse of covariance matrix using spectral decomposition
+det.S.decomp = prod(EigVals.S) #calculating determinant based on eigenvalues
+det.S.decomp #This value is almost the exact same as what we found in part g!
+
+D.inv = round(diag(1/EigVals.S), 2) #calculating lambda inverse matrix (D inverse)
+D.inv
+
+S.inv.decomp = P %*% D.inv %*% t(P) #calculating inverse covariance matrix
+S.inv.decomp
+
+#Comment on the definiteness of the matrix:
+  #A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues,
+  #we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 1, so
+  # we can ssuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
+
+##########################
+
+#part i
