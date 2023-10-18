@@ -118,8 +118,24 @@ S.inv.decomp
 #Comment on the definiteness of the matrix:
   #A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues,
   #we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 1, so
-  # we can ssuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
+  # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 
 ##########################
 
 #part i
+#Compute the inverse square root of the covariance matrix. Then, post multiply the `data matrix' by
+#the inverse square root of the covariance matrix. Now, compute the covariance matrix of the scaled data.
+#What do you expect to see from this? Round your results up to 2 decimal places.
+
+#get the inverse square root of the covariance matrix (D^-1/2)
+D.inv.sqrt = round(diag(sqrt(1/EigVals.S)),2)
+D.inv.sqrt
+
+#multiply the "data matrix" and inverse square root of the covariance matrix
+scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
+
+#compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
+S.scaled = round(cov(scaled_matrix), 2)
+S.scaled
+
+#we would expect to see all values lower than or equal to 1? (correlation matrix?)
