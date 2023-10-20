@@ -139,3 +139,36 @@ S.scaled = round(cov(scaled_matrix), 2)
 S.scaled
 
 #we would expect to see all values lower than or equal to 1? (correlation matrix?)
+
+#############################
+
+#part j
+#Simulate a random sample of size equal to the number of variables you have in the data from normal
+#distribution with corresponding sample means and variances. Use a seed 123 while simulating the sample.
+#Consider this random sample a vector x. Report the sample. Using the fundamental definition, show that
+#the sample covariance is a positive definite matrix, numerically.
+
+#simulate and print the random sample
+set.seed(123)
+x_vec = rnorm(dim(crime_df)[2], mean=0, sd=1)
+x_vec
+
+#show S is a PD matrix (x' %*% S %*% x)
+t(x_vec) %*% S %*% x_vec #616.6908 --> >0 implies that S is a PD matrix
+
+############################################
+
+#part k
+#Perform the singular value decomposition on the data matrix. Which are the singular values and
+#non-singular values from this decomposition. Obtain U, V, and Λ matrices. Only print Λ matrix. Report
+#the dimensions of these matrices. Show that X = U D V′. Use p − 2 singular values to reconstruct the
+#approximated data matrix. Understand that approximation would not be good if you removed important
+#features (non-zero λ values - singular values) of the data. Here, p is the number of variables.
+crime_mat=matrix(crime_matrix, nrow = 51, byrow=T)
+crime_mat
+
+#get eigenvalues and put into λ matrix
+eigen_x = eigen(crime_mat)
+eig_vals = eigen(crime_mat)$values
+lambda_mat = diag(Eig.Vals)
+
