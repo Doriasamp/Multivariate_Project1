@@ -1,6 +1,6 @@
 ---
-title: "Title Page"
-author: "Huey, Dewey, Louie"
+title: "MA369 Group Project #1"
+author: "Andrea Marchi, Tristan Rumsey, Joey Scheuer, Rachel Hughes"
 date: "`r Sys.Date()`"
 output: word_document
 ---
@@ -9,6 +9,28 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+### Title Page and Individual Contributions
+```{r}
+#Part a - Lead: Andrea Marchi, Reviewer: Rachel Hughes
+#Part b - Lead: Andrea Marchi, Reviewer: Rachel Hughes
+#Part c - Lead: Andrea Marchi, Reviewer: Joey Scheuer
+#Part d - Lead: Andrea Marchi, Reviewer: Joey Scheuer
+#Part e - Lead: Andrea Marchi, Reviewer: Joey Scheuer
+#Part f - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part g - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part h - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part i - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part j - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part k - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+
+
+
+
+```
+
+
+#Install needed dependencies
 ```{r, dependencies, echo=F}
 # First thing you have to installing the following dependencies within library()
 # and you only have to do this once
@@ -18,6 +40,7 @@ suppressWarnings({
   suppressMessages({library(GGally)})
 })
 ```
+
 
 ## Part a
 ```{r, part_a, echo = F }
@@ -117,3 +140,50 @@ Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed
 cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
 Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
 dictum fusce.
+
+## Part f
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part f.
+
+
+
+## Part g
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part g.
+
+
+## Part h
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part h.
+
+
+## Part i
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part i.
+
+
+## Part j
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part j.
+
+
+## Part k
+```{r, part_e, echo = F}
+
+```
+#### Some text here to explain part k.
+
+
+
+
+
