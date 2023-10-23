@@ -172,3 +172,4 @@ eigen_x = eigen(crime_mat)
 eig_vals = eigen(crime_mat)$values
 lambda_mat = diag(Eig.Vals)
 
+#joey
