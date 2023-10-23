@@ -152,7 +152,7 @@ dictum fusce.
 
 ```
 #### Some text here to explain part h.
-
+#adef
 
 ## Part i
 ```{r, part_e, echo=setecho}
