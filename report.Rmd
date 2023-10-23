@@ -49,7 +49,7 @@ url = "https://stats.idre.ucla.edu/wp-content/uploads/2016/02/crime.sas7bdat"
 crime_import = read_sas(url, NULL)
 str(crime_import)
 ```
-#### Some text here to explain part a.
+#### Answers and comments:
 The dataset has a total of 51 observations, and a total of 9 variables. Of the 9 variables, 8 of them are numeric, and 1 is categorical (state).
 
 
@@ -59,7 +59,7 @@ write.csv(crime_import, file = "crime_csv.csv", row.names = F)
 write.table(crime_import, file = "crime_txt.txt", sep = "\t", row.names = F)
 dir()
 ```
-#### Some text here to explain part b.
+#### Answers and comments:
 As seen above, the current working directory has a total of 7 different items, including the csv file of the data that we just created, titled "crime_csv", as well as the text file titled "crime_txt".
 
 
@@ -72,7 +72,7 @@ crime_numeric = read_csv("crime_csv.csv",
 
 str(crime_numeric)
 ```
-#### Some text here to explain part c.
+#### Answers and comments:
 We have removed the three variables called sid (state id), state, and crime, and assigned the remaining 6 variables to the "crime_numeric" dataframe. In the structure of this dataframe, there are 51 observations, and a total of 6 variables, all of which are numeric variables.
 
 
@@ -80,33 +80,52 @@ We have removed the three variables called sid (state id), state, and crime, and
 ```{r, part_d, echo=setecho}
 boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 ```
-#### Some text here to explain part d.
-
+#### Answers and comments:
+In the above boxplot, all 6 variables can be visualized in a different color. You can identify outliers for several of the variables. This includes 2 outliers for the "murder" variable, 2 outliers for the "pctwhite" variable, and 1 outlier for the "single" variable
 
 
 ## Part e
 ```{r, part_e, echo=setecho}
 ggpairs(crime_numeric)
 ```
-#### Some text here to explain part e.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+#### Answers and comments:
+#Murder variable:
+The murder variable has a heavily right-skewed distribution. 
+#Pctmetro variable:
+The pctmetro variable has a left-skewed distribution.
+#Pctwhite variable:
+The pctwhite variable has a heavily left-skewed distribution.
+#Pcths variable:
+The pcths variable has a relatively normal distribution.
+#Poverty variable:
+The poverty variable has a right-skewed distribution.
+#Single variable:
+The single variable has a heavily right-skewed distribution.
+#Murder and pctmetro variables:
+The murder variable has a weak positive association with pctmetro, as the correlation coefficient, r, equals 0.316, which is confirmed by the scatterplot that shows a positive slope.
+#Murder and pctwhite variables:
+The murder variable has a moderately strong negative association with pctwhite variable, as r = -0.706. This strong correlation is confirmed by the scatterplot that shows a strong relationship.
+#Murder and pcths variables:
+The murder variable has a moderately weak negative association with the pcths variable, as r = -0.286. This is confirmed by the scatterplot that shows a weak relationship.
+#Murder and poverty variables:
+The murder variable has a moderately strong positive association with the poverty variable, as r = 0.566. This is confirmed by the scatterplot that shows a moderately strong relationship.
+#Murder and single variables:
+The murder variable has a strong positive association with the single variable, as r = 0.859. This is confirmed by the scatterplot that shows a strong relationship.
+#Pctmetro and pctwhite variables:
+The pctmetro variable has a moderately weak negative association with the pctwhite variable, as r = -0.337. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctmetro and pcths variables:
+The pctmetro variable has a no association with the pcths variable, as r = -0.004. This is confirmed by the scatterplot that shows virtually no relationship.
+#Pctmetro and poverty variables:
+The pctmetro variable has a very weak negative association with the poverty variable, as r = -0.061. This is confirmed by the scatterplot that shows a very weak relationship.
+#Pctmetro and single variables:
+The pctmetro variable has a weak positive association with the poverty variable, as r = 0.260. This is confirmed by the scatterplot that shows a weak relationship.
+
 
 ## Part f
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part f.
+#### Answers and comments:
 
 
 
@@ -114,35 +133,35 @@ dictum fusce.
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part g.
+#### Answers and comments:
 
 
 ## Part h
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part h.
+#### Answers and comments:
 
 
 ## Part i
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part i.
+#### Answers and comments:
 
 
 ## Part j
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part j.
+#### Answers and comments:
 
 
 ## Part k
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part k.
+#### Answers and comments:
 
 
 
