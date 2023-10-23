@@ -60,18 +60,8 @@ write.table(crime_import, file = "crime_txt.txt", sep = "\t", row.names = F)
 dir()
 ```
 #### Some text here to explain part b.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+As seen above, the current working directory has a total of 7 different items, including the csv file of the data that we just created, titled "crime_csv", as well as the text file titled "crime_txt".
+
 
 ## Part c
 ```{r, part_c, echo=setecho}
@@ -83,36 +73,16 @@ crime_numeric = read_csv("crime_csv.csv",
 str(crime_numeric)
 ```
 #### Some text here to explain part c.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+We have removed the three variables called sid (state id), state, and crime, and assigned the remaining 6 variables to the "crime_numeric" dataframe. In the structure of this dataframe, there are 51 observations, and a total of 6 variables, all of which are numeric variables.
+
 
 ## Part d
 ```{r, part_d, echo=setecho}
 boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 ```
 #### Some text here to explain part d.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+
+
 
 ## Part e
 ```{r, part_e, echo=setecho}
