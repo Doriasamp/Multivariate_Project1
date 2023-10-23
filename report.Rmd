@@ -6,7 +6,8 @@ output: word_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+setecho=T
+knitr::opts_chunk$set(echo = setecho)
 ```
 
 
@@ -31,7 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 #Install needed dependencies
-```{r, dependencies, echo=F}
+```{r, dependencies, echo=setecho}
 # First thing you have to installing the following dependencies within library()
 # and you only have to do this once
 suppressWarnings({
@@ -43,27 +44,17 @@ suppressWarnings({
 
 
 ## Part a
-```{r, part_a, echo = F }
+```{r, part_a, echo=setecho}
 url = "https://stats.idre.ucla.edu/wp-content/uploads/2016/02/crime.sas7bdat"
 crime_import = read_sas(url, NULL)
 str(crime_import)
 ```
 #### Some text here to explain part a.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+The dataset has a total of 51 observations, and a total of 9 variables. Of the 9 variables, 8 of them are numeric, and 1 is categorical (state).
+
 
 ## Part b
-```{r, part_b, echo = F}
+```{r, part_b, echo=setecho}
 write.csv(crime_import, file = "crime_csv.csv", row.names = F)
 write.table(crime_import, file = "crime_txt.txt", sep = "\t", row.names = F)
 dir()
@@ -83,7 +74,7 @@ Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida
 dictum fusce.
 
 ## Part c
-```{r, part_c, echo = F}
+```{r, part_c, echo=setecho}
 crime_numeric = read_csv("crime_csv.csv",
                          col_types = cols(sid = col_skip(),
                                           state = col_skip(),
@@ -106,7 +97,7 @@ Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida
 dictum fusce.
 
 ## Part d
-```{r, part_d, echo = F}
+```{r, part_d, echo=setecho}
 boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 ```
 #### Some text here to explain part d.
@@ -124,7 +115,7 @@ Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida
 dictum fusce.
 
 ## Part e
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 ggpairs(crime_numeric)
 ```
 #### Some text here to explain part e.
@@ -142,7 +133,7 @@ Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida
 dictum fusce.
 
 ## Part f
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part f.
@@ -150,35 +141,35 @@ dictum fusce.
 
 
 ## Part g
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part g.
 
 
 ## Part h
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part h.
 
 
 ## Part i
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part i.
 
 
 ## Part j
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part j.
 
 
 ## Part k
-```{r, part_e, echo = F}
+```{r, part_e, echo=setecho}
 
 ```
 #### Some text here to explain part k.
