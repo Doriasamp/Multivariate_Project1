@@ -118,27 +118,99 @@ The pctmetro variable has a no association with the pcths variable, as r = -0.00
 #Pctmetro and poverty variables:
 The pctmetro variable has a very weak negative association with the poverty variable, as r = -0.061. This is confirmed by the scatterplot that shows a very weak relationship.
 #Pctmetro and single variables:
-The pctmetro variable has a weak positive association with the poverty variable, as r = 0.260. This is confirmed by the scatterplot that shows a weak relationship.
+The pctmetro variable has a moderately weak positive association with the poverty variable, as r = 0.260. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and pcths variables:
+The pctwhite variable has a moderately weak positive association with the pcths variable, as r = 0.339. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and poverty variables:
+The pctwhite variable has a moderately weak negative association with the poverty variable, as r = -0.389. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and single variables:
+The pctwhite variable has a moderately strong negative association with the poverty variable, as r = -0.656. This is confirmed by the scatterplot that shows a moderately strong relationship.
+#Pcths and poverty variables:
+The pcths variable has a strong negative association with the poverty variable, as r = -0.744. This is confirmed by the scatterplot that shows a strong relationship.
+#Pcths and single variables:
+The pcths variable has a weak negative association with the single variable, as r = -0.220. This is confirmed by the scatterplot that shows a weak relationship.
+#Poverty and single variables:
+The poverty variable has a moderately strong positive association with the single variable, as r = 0.549. This is confirmed by the scatterplot that shows a moderately strong relationship.
 
 
 ## Part f
 ```{r, part_e, echo=setecho}
+#converting data into dataframe and into matrix
+crime_df = data.frame(crime_numeric)
+crime_matrix = data.matrix(crime_df)
+crime_matrix #matrix to use for creating covariance and correlation matrices
 
+#sample covariance matrix
+S = round(cov(crime_matrix), 2)
+S
+
+#sample correlation matrix
+R = round(cor(crime_matrix), 2)
+R
+
+#standardized data matrix
+std.crime_mat = scale(crime_matrix)
+
+#standardized sample covariance matrix
+S.std = round(cov(std.crime_mat), 2)
+S.std
 ```
 #### Answers and comments:
 
 
-
 ## Part g
 ```{r, part_e, echo=setecho}
+#calculate GSV --> >0, so S is invertible
+GSV = det(S)
+GSV
 
+#inverse of sample covariance matrix
+S.inv = round(solve(S), 3)
+S.inv
 ```
 #### Answers and comments:
 
 
 ## Part h
 ```{r, part_e, echo=setecho}
+#spectral decomposition
+Eig.S = eigen(S)
+EigVals.S = round(Eig.S$values, 2)
+EigVals.S #getting the eigenvalues
 
+#obtaining the eigenvector matrix (P)
+P=round(Eig.S$vectors, 2)
+P #creating matrix of normalized eigenvectors
+
+#showing that P'P = PP' = I
+round(P %*% t(P), 2) # equals the identity matrix -- correct!
+
+#obtaining the lambda matrix (D)
+D=diag(EigVals.S)
+D
+
+#compute the spectral decomposition matrix, PDP'
+Cov.Spec.Decomp = round(P %*% D %*% t(P), 2)
+Cov.Spec.Decomp
+S #for comparison to the original sample covariance matrix
+
+#relation b/w the "product matrix and the original sample covariance matrix":
+  #The values of the original covariance matrix and the spectral decomposition matrix are very close!
+
+#calculating determinant and inverse of covariance matrix using spectral decomposition
+det.S.decomp = prod(EigVals.S) #calculating determinant based on eigenvalues
+det.S.decomp #This value is almost the exact same as what we found in part g!
+
+D.inv = round(diag(1/EigVals.S), 2) #calculating lambda inverse matrix (D inverse)
+D.inv
+
+S.inv.decomp = P %*% D.inv %*% t(P) #calculating inverse covariance matrix
+S.inv.decomp
+
+#Comment on the definiteness of the matrix:
+  #A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues,
+  #we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 1, so
+  # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 ```
 #### Answers and comments:
 
