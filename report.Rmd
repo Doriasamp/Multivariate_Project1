@@ -222,16 +222,38 @@ S.inv.decomp
 
 ## Part i
 ```{r, part_e, echo=setecho}
+#Compute the inverse square root of the covariance matrix. Then, post multiply the `data matrix' by
+#the inverse square root of the covariance matrix. Now, compute the covariance matrix of the scaled data.
+#What do you expect to see from this? Round your results up to 2 decimal places.
 
+#get the inverse square root of the covariance matrix (D^-1/2)
+D.inv.sqrt = round(sqrt(S.inv),2)
+
+#multiply the "data matrix" and inverse square root of the covariance matrix
+
+#compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
+S.scaled = round(cov(scaled_matrix), 2)
+S.scaled
 ```
 #### Answers and comments:
+By taking the inverse square root of sample covariance matrix S, we obtained in part g, we get a matrix filled with some non-real values because some of the covariance have a negative value.
+Because of that we end up with a matrix full of na's
 
 
 ## Part j
 ```{r, part_e, echo=setecho}
-
+#simulate and print the random sample
+set.seed(123)
+cat("Random vector with n = # feature in crime_mat = 6:\n")
+x_vec = rnorm(dim(crime_df)[2], mean=mean(crime_mat), sd=sd(crime_mat))
+x_vec
+#show S is a PD matrix (x' %*% S %*% x)
+t(x_vec) %*% S %*% x_vec #616.6908 --> >0 implies that S is a PD matrix
 ```
 #### Answers and comments:
+We simulated from a normal distribution a random sample of size equal to the number of features in crime_mat, and its corresponding sample mean and and standard deviation, but before we set the random seed to 123, to allow us to reproduce the output in different runtime.
+Finally, we named this random vector X and we showed that X'SX it returns a very large positive value as expected for a positive definite matrix. In fact, we could theoretically repeat the experiment with all the possible (infinite) combinations of such a vector and still get a positive value.
+
 
 
 ## Part k
