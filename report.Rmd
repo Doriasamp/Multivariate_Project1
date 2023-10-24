@@ -49,7 +49,7 @@ url = "https://stats.idre.ucla.edu/wp-content/uploads/2016/02/crime.sas7bdat"
 crime_import = read_sas(url, NULL)
 str(crime_import)
 ```
-#### Some text here to explain part a.
+#### Answers and comments:
 The dataset has a total of 51 observations, and a total of 9 variables. Of the 9 variables, 8 of them are numeric, and 1 is categorical (state).
 
 
@@ -59,19 +59,9 @@ write.csv(crime_import, file = "crime_csv.csv", row.names = F)
 write.table(crime_import, file = "crime_txt.txt", sep = "\t", row.names = F)
 dir()
 ```
-#### Some text here to explain part b.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+#### Answers and comments:
+As seen above, the current working directory has a total of 7 different items, including the csv file of the data that we just created, titled "crime_csv", as well as the text file titled "crime_txt".
+
 
 ## Part c
 ```{r, part_c, echo=setecho}
@@ -82,97 +72,173 @@ crime_numeric = read_csv("crime_csv.csv",
 
 str(crime_numeric)
 ```
-#### Some text here to explain part c.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+#### Answers and comments:
+We have removed the three variables called sid (state id), state, and crime, and assigned the remaining 6 variables to the "crime_numeric" dataframe. In the structure of this dataframe, there are 51 observations, and a total of 6 variables, all of which are numeric variables.
+
 
 ## Part d
 ```{r, part_d, echo=setecho}
 boxplot(crime_numeric, las = 2, col = rainbow(ncol(crime_numeric)))
 ```
-#### Some text here to explain part d.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+#### Answers and comments:
+In the above boxplot, all 6 variables can be visualized in a different color. You can identify outliers for several of the variables. This includes 2 outliers for the "murder" variable, 2 outliers for the "pctwhite" variable, and 1 outlier for the "single" variable
+
 
 ## Part e
 ```{r, part_e, echo=setecho}
 ggpairs(crime_numeric)
 ```
-#### Some text here to explain part e.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  
-incididunt ut labore et dolore magna aliqua. Ut enim blandit volutpat maecenas  
-volutpat blandit aliquam etiam erat. Duis at consectetur lorem donec massa  
-sapien. Cursus metus aliquam eleifend mi. Amet dictum sit amet justo. 
-Nunc non blandit massa enim nec dui. Sed nisi lacus sed viverra tellus in hac  
-habitasse. Morbi blandit cursus risus at ultrices mi tempus imperdiet nulla.  
-Turpis egestas integer eget aliquet. Rhoncus dolor purus non enim praesent  
-elementum facilisis leo vel. Morbi tempus iaculis urna id volutpat.  
-Enim lobortis scelerisque fermentum dui faucibus. Blandit libero volutpat sed  
-cras ornare arcu dui vivamus arcu. Vitae ultricies leo integer malesuada nunc.  
-Erat velit scelerisque in dictum. Quis ipsum suspendisse ultrices gravida  
-dictum fusce.
+#### Answers and comments:
+#Murder variable:
+The murder variable has a heavily right-skewed distribution. 
+#Pctmetro variable:
+The pctmetro variable has a left-skewed distribution.
+#Pctwhite variable:
+The pctwhite variable has a heavily left-skewed distribution.
+#Pcths variable:
+The pcths variable has a relatively normal distribution.
+#Poverty variable:
+The poverty variable has a right-skewed distribution.
+#Single variable:
+The single variable has a heavily right-skewed distribution.
+#Murder and pctmetro variables:
+The murder variable has a weak positive association with pctmetro, as the correlation coefficient, r, equals 0.316, which is confirmed by the scatterplot that shows a positive slope.
+#Murder and pctwhite variables:
+The murder variable has a moderately strong negative association with pctwhite variable, as r = -0.706. This strong correlation is confirmed by the scatterplot that shows a strong relationship.
+#Murder and pcths variables:
+The murder variable has a moderately weak negative association with the pcths variable, as r = -0.286. This is confirmed by the scatterplot that shows a weak relationship.
+#Murder and poverty variables:
+The murder variable has a moderately strong positive association with the poverty variable, as r = 0.566. This is confirmed by the scatterplot that shows a moderately strong relationship.
+#Murder and single variables:
+The murder variable has a strong positive association with the single variable, as r = 0.859. This is confirmed by the scatterplot that shows a strong relationship.
+#Pctmetro and pctwhite variables:
+The pctmetro variable has a moderately weak negative association with the pctwhite variable, as r = -0.337. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctmetro and pcths variables:
+The pctmetro variable has a no association with the pcths variable, as r = -0.004. This is confirmed by the scatterplot that shows virtually no relationship.
+#Pctmetro and poverty variables:
+The pctmetro variable has a very weak negative association with the poverty variable, as r = -0.061. This is confirmed by the scatterplot that shows a very weak relationship.
+#Pctmetro and single variables:
+The pctmetro variable has a moderately weak positive association with the poverty variable, as r = 0.260. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and pcths variables:
+The pctwhite variable has a moderately weak positive association with the pcths variable, as r = 0.339. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and poverty variables:
+The pctwhite variable has a moderately weak negative association with the poverty variable, as r = -0.389. This is confirmed by the scatterplot that shows a moderately weak relationship.
+#Pctwhite and single variables:
+The pctwhite variable has a moderately strong negative association with the poverty variable, as r = -0.656. This is confirmed by the scatterplot that shows a moderately strong relationship.
+#Pcths and poverty variables:
+The pcths variable has a strong negative association with the poverty variable, as r = -0.744. This is confirmed by the scatterplot that shows a strong relationship.
+#Pcths and single variables:
+The pcths variable has a weak negative association with the single variable, as r = -0.220. This is confirmed by the scatterplot that shows a weak relationship.
+#Poverty and single variables:
+The poverty variable has a moderately strong positive association with the single variable, as r = 0.549. This is confirmed by the scatterplot that shows a moderately strong relationship.
+
 
 ## Part f
 ```{r, part_e, echo=setecho}
+#converting data into dataframe and into matrix
+crime_df = data.frame(crime_numeric)
+crime_matrix = data.matrix(crime_df)
+crime_matrix #matrix to use for creating covariance and correlation matrices
 
+#sample covariance matrix
+S = round(cov(crime_matrix), 2)
+S
+
+#sample correlation matrix
+R = round(cor(crime_matrix), 2)
+R
+
+#standardized data matrix
+std.crime_mat = scale(crime_matrix)
+
+#standardized sample covariance matrix
+S.std = round(cov(std.crime_mat), 2)
+S.std
 ```
-#### Some text here to explain part f.
-
+#### Answers and comments:
 
 
 ## Part g
 ```{r, part_e, echo=setecho}
+#calculate GSV --> >0, so S is invertible
+GSV = det(S)
+GSV
 
+#inverse of sample covariance matrix
+S.inv = round(solve(S), 3)
+S.inv
 ```
-#### Some text here to explain part g.
+#### Answers and comments:
 
 
 ## Part h
 ```{r, part_e, echo=setecho}
+#spectral decomposition
+Eig.S = eigen(S)
+EigVals.S = round(Eig.S$values, 2)
+EigVals.S #getting the eigenvalues
 
+#obtaining the eigenvector matrix (P)
+P=round(Eig.S$vectors, 2)
+P #creating matrix of normalized eigenvectors
+
+#showing that P'P = PP' = I
+round(P %*% t(P), 2) # equals the identity matrix -- correct!
+
+#obtaining the lambda matrix (D)
+D=diag(EigVals.S)
+D
+
+#compute the spectral decomposition matrix, PDP'
+Cov.Spec.Decomp = round(P %*% D %*% t(P), 2)
+Cov.Spec.Decomp
+S #for comparison to the original sample covariance matrix
+
+#relation b/w the "product matrix and the original sample covariance matrix":
+  #The values of the original covariance matrix and the spectral decomposition matrix are very close!
+
+#calculating determinant and inverse of covariance matrix using spectral decomposition
+det.S.decomp = prod(EigVals.S) #calculating determinant based on eigenvalues
+det.S.decomp #This value is almost the exact same as what we found in part g!
+
+D.inv = round(diag(1/EigVals.S), 2) #calculating lambda inverse matrix (D inverse)
+D.inv
+
+S.inv.decomp = P %*% D.inv %*% t(P) #calculating inverse covariance matrix
+S.inv.decomp
+
+#Comment on the definiteness of the matrix:
+  #A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues,
+  #we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 1, so
+  # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 ```
+<<<<<<< HEAD
 #### Some text here to explain part h.
-#adef
+#We can see that creating P by combining the eigenvectors and multiplying that P' results in the identity matrix. When comparing the original covariance matrix and the spectral decomposition matrix we can see that the values of the two matrices are very close. When we calculate the determinant in this step we get 650566462 which is very close to the value of 650566462 that we get when we calculate the determinant in step g. A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues, we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 0. Because of the, we can say that the covariance matrix (S) is a positive definite (PD) matrix.
+=======
+#### Answers and comments:
+
+>>>>>>> fce4c7e32fd14f39e9963a9d6f11270529878721
 
 ## Part i
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part i.
+#### Answers and comments:
 
 
 ## Part j
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part j.
+#### Answers and comments:
 
 
 ## Part k
 ```{r, part_e, echo=setecho}
 
 ```
-#### Some text here to explain part k.
+#### Answers and comments:
 
 
 
