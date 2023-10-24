@@ -164,10 +164,28 @@ t(x_vec) %*% S %*% x_vec #616.6908 --> >0 implies that S is a PD matrix
 #the dimensions of these matrices. Show that X = U D V′. Use p − 2 singular values to reconstruct the
 #approximated data matrix. Understand that approximation would not be good if you removed important
 #features (non-zero λ values - singular values) of the data. Here, p is the number of variables.
-crime_mat=matrix(crime_matrix, nrow = 51, byrow=T)
 SVD_matrix = svd(crime_mat)
+U = SVD_matrix$u
+V = SVD_matrix$v
+lambda = diag(SVD_matrix$d)
+print(lambda)
+cat(paste("Dimension of U:", paste(dim(U), collapse = "x")))
+cat(paste("Dimension of V:", paste(dim(V), collapse = "x")))
+cat(paste("Dimension of Lambda:", paste(dim(lambda), collapse = "x")))
+cat("Lambda Matrix:")
+print(lambda)
 
+X = U%*%lambda%*%t(V)
+cat("Total overall difference between original crime_mat data and reconstructed
+     data matrix with SVD: ", max(abs(crime_mat-X)))
 
-
-
-#joey
+SVD_matrix$d
+SVD_matrix
+r = dim(lambda)[1]-2
+lambda_r = lambda[1:r, 1:r]
+cat(paste("New dimension of Lambda:", paste(dim(lambda_r), collapse = "x")))
+U_r = U[, 1:r]
+V_r = V[, 1:r]
+X_reduced_reconstruct = U_r %*% lambda_r %*% t(V_r)
+cat("Total overall difference between original crime_mat data and reconstructed
+     and p-2 reduced data matrix with SVD: ", max(abs(crime_mat-X_reduced_reconstruct)))
