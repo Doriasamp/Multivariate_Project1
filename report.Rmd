@@ -236,9 +236,40 @@ S.inv.decomp
 
 ## Part k
 ```{r, part_e, echo=setecho}
-
+# Creating the SVD matrix
+SVD_matrix = svd(crime_mat)
+# Creating the U matrix
+U = SVD_matrix$u
+# Creating the V matrix
+V = SVD_matrix$v
+# Creating and printing the lambda matrix
+lambda = diag(SVD_matrix$d)
+cat("Lambda Matrix from SVD:\n\n")
+lambda
+# Checking and printing the dimensions of U, V, and Lambda
+cat(paste("\nDimension of U:", paste(dim(U), collapse = "x")), "\n")
+cat(paste("Dimension of V:", paste(dim(V), collapse = "x")), "\n")
+cat(paste("Dimension of Lambda:", paste(dim(lambda), collapse = "x")), "\n")
+# Reconstructing original crime_mat data with UDV'
+X = U%*%lambda%*%t(V)
+# Showing how this reconstruction it returns the original data (-with onlt floating points errors)
+cat("\nTotal overall difference between original crime_mat data and reconstructed data matrix with SVD: ",
+    max(abs(crime_mat-X)))
+r = dim(lambda)[1]-2
+lambda_r = lambda[1:r, 1:r]
+cat(paste("\n\nNew dimension of Lambda:", paste(dim(lambda_r), collapse = "x")))
+U_r = U[, 1:r]
+V_r = V[, 1:r]
+X_reduced_reconstruct = U_r %*% lambda_r %*% t(V_r)
+cat("\n\nTotal overall difference between original crime_mat data and reconstructed and p-2 reduced data matrix with SVD: ", max(abs(crime_mat-X_reduced_reconstruct)))
 ```
 #### Answers and comments:
+When computing the singular value decomposition on our crime_mat matrix we can notice that from lambda matrix printout, none of the values is 0 zero or close to zero. Because of that we can infer that none of the variables in crime_mat is a linear combination of other variables, and we should that reducing the rank it will cause a loss of important features
+The dimension of matrices U, V and lambda from SVD are respectively 51 by 6, 6 by 6, and 6 by 6.
+Moreover, by taking advantage of SVD we proved that the identity X = UDV' (where X is the original data matrix) holds true. In fact, by computing the absolute value of the difference between crime_mat and the matrix obtained by multiplying U, D and V', we obtain a value that is basically zero.
+Finally, we wanted to show that by reducing the rank by 2, with features that as showed by the printout of lambda have a non-zero value, we cannot obtain our original crime_mat matrix by UDV' identity.
+In showing this we reduced the rank by eliminating the 2 columns with lowest eigenvalues in main diagonal, and by computing the absolute difference between crime_mat and UDV' with reduced rank we get a value of 25.75, showing that the matrix reconstructed with reduced rank without non-zero eigenvalues is different then crime_mat.
+
 
 
 
