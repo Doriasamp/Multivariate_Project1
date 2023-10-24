@@ -165,10 +165,8 @@ t(x_vec) %*% S %*% x_vec #616.6908 --> >0 implies that S is a PD matrix
 #approximated data matrix. Understand that approximation would not be good if you removed important
 #features (non-zero λ values - singular values) of the data. Here, p is the number of variables.
 crime_mat=matrix(crime_matrix, nrow = 51, byrow=T)
-crime_mat
+SVD_matrix = svd(crime_mat)
 
-#get eigenvalues and put into λ matrix
-eigen_x = eigen(crime_mat)
-eig_vals = eigen(crime_mat)$values
-lambda_mat = diag(Eig.Vals)
+
+
 
