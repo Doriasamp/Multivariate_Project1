@@ -252,7 +252,7 @@ Finally, we named this random vector X and we showed that X'SX it returns a very
 ## Part k
 ```{r, part_k, echo=setecho}
 # Creating the SVD matrix
-SVD_matrix = svd(crime_mat)
+SVD_matrix = svd(crime_matrix)
 # Creating the U matrix
 U = SVD_matrix$u
 # Creating the V matrix
