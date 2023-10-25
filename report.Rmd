@@ -213,7 +213,7 @@ S.inv.decomp
   # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 ```
 <<<<<<< HEAD
-#### Some text here to explain part h.
+#### Answers and comments:
 #We can see that creating P by combining the eigenvectors and multiplying that P' results in the identity matrix. When comparing the original covariance matrix and the spectral decomposition matrix we can see that the values of the two matrices are very close. When we calculate the determinant in this step we get 650566462 which is very close to the value of 650566462 that we get when we calculate the determinant in step g. A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues, we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 0. Because of the, we can say that the covariance matrix (S) is a positive definite (PD) matrix.
 =======
 #### Answers and comments:
@@ -222,14 +222,12 @@ S.inv.decomp
 
 ## Part i
 ```{r, part_e, echo=setecho}
-#Compute the inverse square root of the covariance matrix. Then, post multiply the `data matrix' by
-#the inverse square root of the covariance matrix. Now, compute the covariance matrix of the scaled data.
-#What do you expect to see from this? Round your results up to 2 decimal places.
-
 #get the inverse square root of the covariance matrix (D^-1/2)
-D.inv.sqrt = round(sqrt(S.inv),2)
+D.inv.sqrt = round(diag(sqrt(1/EigVals.S)),2)
+D.inv.sqrt
 
 #multiply the "data matrix" and inverse square root of the covariance matrix
+scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
 
 #compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
 S.scaled = round(cov(scaled_matrix), 2)
