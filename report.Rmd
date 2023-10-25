@@ -223,13 +223,9 @@ D.inv.sqrt = round(diag(sqrt(1/EigVals.S)),2)
 D.inv.sqrt
 
 #multiply the "data matrix" and inverse square root of the covariance matrix
-scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
+mult_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
 
-#compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
-S.scaled = round(cov(scaled_matrix), 2)
-S.scaled
-
-#get standardized data matrix
+#get standardized (scaled) data matrix
 std_data_mat = scale(crime_matrix)
 std_data_mat
 
@@ -242,7 +238,7 @@ R = cor(std_data_mat) #the EXACT same as the covariance matrix of the standardiz
 R
 ```
 #### Answers and comments:
-We expect to see that the covariance matrix of the standardized data matrix is the same as its correlation matrix (R). This is exactly the case, as shown above, as the S.std and R matrices are equivalent.
+We expect to see that the covariance matrix of the standardized data matrix is the same as the correlation matrix (R) of the standardized data. This is exactly the case, as shown above, as the S.std and R matrices are equivalent.
 
 
 ## Part j
