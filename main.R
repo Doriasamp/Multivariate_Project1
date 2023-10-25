@@ -133,6 +133,7 @@ D.inv.sqrt
 
 #multiply the "data matrix" and inverse square root of the covariance matrix
 scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
+scaled_matrix
 
 #compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
 S.scaled = round(cov(scaled_matrix), 2)

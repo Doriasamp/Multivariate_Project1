@@ -138,7 +138,7 @@ The poverty variable has a moderately strong positive association with the singl
 #converting data into dataframe and into matrix
 crime_df = data.frame(crime_numeric)
 crime_matrix = data.matrix(crime_df)
-crime_matrix #matrix to use for creating covariance and correlation matrices
+crime_matrix
 
 #sample covariance matrix
 S = round(cov(crime_matrix), 2)
@@ -161,7 +161,6 @@ Note that the sample correlation matrix is already standardized as it is equal t
 
 ## Part g
 ```{r, part_e, echo=setecho}
-#calculate GSV --> >0, so S is invertible
 GSV = det(S)
 GSV
 
@@ -183,10 +182,10 @@ EigVals.S #getting the eigenvalues
 
 #obtaining the eigenvector matrix (P)
 P=round(Eig.S$vectors, 2)
-P #creating matrix of normalized eigenvectors
+P
 
 #showing that P'P = PP' = I
-round(P %*% t(P), 2) # equals the identity matrix -- correct!
+round(P %*% t(P), 2)
 
 #obtaining the lambda matrix (D)
 D=diag(EigVals.S)
@@ -195,25 +194,20 @@ D
 #compute the spectral decomposition matrix, PDP'
 Cov.Spec.Decomp = round(P %*% D %*% t(P), 2)
 Cov.Spec.Decomp
-S #for comparison to the original sample covariance matrix
-
-#relation b/w the "product matrix and the original sample covariance matrix":
-  #The values of the original covariance matrix and the spectral decomposition matrix are very close!
+S
 
 #calculating determinant and inverse of covariance matrix using spectral decomposition
-det.S.decomp = prod(EigVals.S) #calculating determinant based on eigenvalues
-det.S.decomp #This value is almost the exact same as what we found in part g!
+det.S.decomp = prod(EigVals.S)
+det.S.decomp
 
-D.inv = round(diag(1/EigVals.S), 2) #calculating lambda inverse matrix (D inverse)
+#calculating lambda inverse matrix (D inverse)
+D.inv = round(diag(1/EigVals.S), 2)
 D.inv
 
-S.inv.decomp = P %*% D.inv %*% t(P) #calculating inverse covariance matrix
+#calculating inverse covariance matrix
+S.inv.decomp = P %*% D.inv %*% t(P)
 S.inv.decomp
 
-#Comment on the definiteness of the matrix:
-  #A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues,
-  #we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 1, so
-  # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 ```
 #### Answers and comments:
 We can see that creating P by combining the eigenvectors and multiplying that P' results in the identity matrix. When comparing the original covariance matrix and the spectral decomposition matrix we can see that the values of the two matrices are very close. When we calculate the determinant in this step we get 650566462 which is very close to the value of 650566462 that we get when we calculate the determinant in step g. 
@@ -229,20 +223,13 @@ D.inv.sqrt
 #multiply the "data matrix" and inverse square root of the covariance matrix
 mult_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
 
-#get standardized (scaled) data matrix
-std_data_mat = scale(crime_matrix)
-std_data_mat
+#compute covariance matrix of the scaled data
+S.scaled = round(cov(mult_matrix), 2)
+S.scaled
 
-#covariance matrix of the standardized data
-S.std = cov(std_data_mat)
-S.std
-
-#compare to correlation matrix
-R = cor(std_data_mat) #the EXACT same as the covariance matrix of the standardized data
-R
 ```
 #### Answers and comments:
-We expect to see that the covariance matrix of the standardized data matrix is the same as the correlation matrix (R) of the standardized data. This is exactly the case, as shown above, as the S.std and R matrices are equivalent.
+The covariance matrix of the scaled data shows the same signs as the covariance matrix of the standardized data. While the values are different, the matrices show the positive or negative relationship between each pair of variables.
 
 
 ## Part j
@@ -252,12 +239,13 @@ set.seed(123)
 cat("Random vector with n = # feature in crime_mat = 6:\n")
 x_vec = rnorm(dim(crime_df)[2], mean=mean(crime_mat), sd=sd(crime_mat))
 x_vec
+
 #show S is a PD matrix (x' %*% S %*% x)
-t(x_vec) %*% S %*% x_vec #616.6908 --> >0 implies that S is a PD matrix
+t(x_vec) %*% S %*% x_vec
 ```
 #### Answers and comments:
 We simulated from a normal distribution a random sample of size equal to the number of features in crime_mat, and its corresponding sample mean and and standard deviation, but before we set the random seed to 123, to allow us to reproduce the output in different runtime.
-Finally, we named this random vector X and we showed that X'SX it returns a very large positive value as expected for a positive definite matrix. In fact, we could theoretically repeat the experiment with all the possible (infinite) combinations of such a vector and still get a positive value.
+Finally, we named this random vector X and we showed that X'SX it returns a very large positive value (616.6908) as expected for a positive definite matrix. In fact, we could theoretically repeat the experiment with all the possible (infinite) combinations of such a vector and still get a positive value.
 
 
 
@@ -279,7 +267,7 @@ cat(paste("Dimension of V:", paste(dim(V), collapse = "x")), "\n")
 cat(paste("Dimension of Lambda:", paste(dim(lambda), collapse = "x")), "\n")
 # Reconstructing original crime_mat data with UDV'
 X = U%*%lambda%*%t(V)
-# Showing how this reconstruction it returns the original data (-with onlt floating points errors)
+# Showing how this reconstruction it returns the original data (-with only floating point errors)
 cat("\nTotal overall difference between original crime_mat data and reconstructed data matrix with SVD: ",
     max(abs(crime_mat-X)))
 r = dim(lambda)[1]-2
