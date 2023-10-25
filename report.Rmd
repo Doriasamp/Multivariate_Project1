@@ -237,7 +237,7 @@ The covariance matrix of the scaled data shows the same signs as the covariance 
 #simulate and print the random sample
 set.seed(123)
 cat("Random vector with n = # feature in crime_mat = 6:\n")
-x_vec = rnorm(dim(crime_df)[2], mean=mean(crime_mat), sd=sd(crime_mat))
+x_vec = rnorm(dim(crime_df)[2], mean=mean(crime_matrix), sd=sd(crime_matrix))
 x_vec
 
 #show S is a PD matrix (x' %*% S %*% x)
