@@ -14,16 +14,16 @@ knitr::opts_chunk$set(echo = setecho)
 ### Title Page and Individual Contributions
 ```{r}
 #Part a - Lead: Andrea Marchi, Reviewer: Rachel Hughes
-#Part b - Lead: Andrea Marchi, Reviewer: Rachel Hughes
+#Part b - Lead: Rachel Hughes, Reviewer: Andrea Marchi
 #Part c - Lead: Andrea Marchi, Reviewer: Joey Scheuer
-#Part d - Lead: Andrea Marchi, Reviewer: Joey Scheuer
-#Part e - Lead: Andrea Marchi, Reviewer: Joey Scheuer
-#Part f - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
-#Part g - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
-#Part h - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
-#Part i - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
-#Part j - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
-#Part k - Lead: Tristan Rumsey, Reviewer: Joey Scheuer
+#Part d - Lead: Joey Scheuer, Reviewer: Andrea Marchi
+#Part e - Lead: Joey Scheuer, Reviewer: Tristan Rumsey
+#Part f - Lead: Tristan Rumsey, Reviewer: Rachel Hughes
+#Part g - Lead: Rachel Hughes, Reviewer: Joey Scheuer
+#Part h - Lead: Tristan Rumsey, Reviewer: Rachel Hughes
+#Part i - Lead: Tristan Rumsey, Reviewer: Andrea Marchi
+#Part j - Lead: Joey Scheuer, Reviewer: Rachel Hughes
+#Part k - Lead: Andrea Marchi, Reviewer: Tristan Rumsey
 
 
 
@@ -216,7 +216,8 @@ S.inv.decomp
   # we can assuredly say that the covariance matrix (S) is a positive definite (PD) matrix.
 ```
 #### Answers and comments:
-We can see that creating P by combining the eigenvectors and multiplying that P' results in the identity matrix. When comparing the original covariance matrix and the spectral decomposition matrix we can see that the values of the two matrices are very close. When we calculate the determinant in this step we get 650566462 which is very close to the value of 650566462 that we get when we calculate the determinant in step g. A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues, we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 0. Because of the, we can say that the covariance matrix (S) is a positive definite (PD) matrix.
+We can see that creating P by combining the eigenvectors and multiplying that P' results in the identity matrix. When comparing the original covariance matrix and the spectral decomposition matrix we can see that the values of the two matrices are very close. When we calculate the determinant in this step we get 650566462 which is very close to the value of 650566462 that we get when we calculate the determinant in step g. 
+A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning of part h, in calculating the eigenvalues, we found eigenvalues of 536.70, 210.98, 43.62, 33.20, 4.09, and 0.97. All of these eigenvalues are greater than 0. Because of the, we can say that the covariance matrix (S) is a positive definite (PD) matrix.
 
 
 ## Part i
