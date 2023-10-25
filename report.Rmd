@@ -134,7 +134,7 @@ The poverty variable has a moderately strong positive association with the singl
 
 
 ## Part f
-```{r, part_e, echo=setecho}
+```{r, part_f, echo=setecho}
 #converting data into dataframe and into matrix
 crime_df = data.frame(crime_numeric)
 crime_matrix = data.matrix(crime_df)
@@ -160,7 +160,7 @@ Note that the sample correlation matrix is already standardized as it is equal t
 
 
 ## Part g
-```{r, part_e, echo=setecho}
+```{r, part_g, echo=setecho}
 GSV = det(S)
 GSV
 
@@ -174,7 +174,7 @@ The inverse covariance matrix once again shows the correlations between murder a
 
 
 ## Part h
-```{r, part_e, echo=setecho}
+```{r, part_h, echo=setecho}
 #spectral decomposition
 Eig.S = eigen(S)
 EigVals.S = round(Eig.S$values, 2)
@@ -215,7 +215,7 @@ A matrix is a PD matrix if all of its eigenvalues > 0. As seen in the beginning 
 
 
 ## Part i
-```{r, part_e, echo=setecho}
+```{r, part_i, echo=setecho}
 #get the inverse square root of the covariance matrix (D^-1/2)
 D.inv.sqrt = round(diag(sqrt(1/EigVals.S)),2)
 D.inv.sqrt
@@ -233,7 +233,7 @@ The covariance matrix of the scaled data shows the same signs as the covariance 
 
 
 ## Part j
-```{r, part_e, echo=setecho}
+```{r, part_j, echo=setecho}
 #simulate and print the random sample
 set.seed(123)
 cat("Random vector with n = # feature in crime_mat = 6:\n")
@@ -250,7 +250,7 @@ Finally, we named this random vector X and we showed that X'SX it returns a very
 
 
 ## Part k
-```{r, part_e, echo=setecho}
+```{r, part_k, echo=setecho}
 # Creating the SVD matrix
 SVD_matrix = svd(crime_mat)
 # Creating the U matrix
