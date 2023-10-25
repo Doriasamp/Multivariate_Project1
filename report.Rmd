@@ -228,9 +228,21 @@ scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
 #compute covariance matrix of the scaled data (is "scaled data" what is in line 135?)
 S.scaled = round(cov(scaled_matrix), 2)
 S.scaled
+
+#get standardized data matrix
+std_data_mat = scale(crime_matrix)
+std_data_mat
+
+#covariance matrix of the standardized data
+S.std = cov(std_data_mat)
+S.std
+
+#compare to correlation matrix
+R = cor(std_data_mat) #the EXACT same as the covariance matrix of the standardized data
+R
 ```
 #### Answers and comments:
-
+We expect to see that the covariance matrix of the standardized data matrix is the same as its correlation matrix (R). This is exactly the case, as shown above, as the S.std and R matrices are equivalent.
 
 
 ## Part j

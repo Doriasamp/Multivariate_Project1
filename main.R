@@ -138,6 +138,18 @@ scaled_matrix = round(crime_matrix %*% D.inv.sqrt, 2)
 S.scaled = round(cov(scaled_matrix), 2)
 S.scaled
 
+#get standardized data matrix
+std_data_mat = scale(crime_matrix)
+std_data_mat
+
+#covariance matrix of the standardized data
+S.std = cov(std_data_mat)
+S.std
+
+#compare to correlation matrix
+R = cor(std_data_mat) #the EXACT same as the covariance matrix of the standardized data
+R
+
 #we would expect to see all values lower than or equal to 1? (correlation matrix?)
 
 #############################
